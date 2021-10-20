@@ -105,7 +105,7 @@ console.log('Result of indexOf method: ' + firstIndex);
 let invalidCountry = countries.indexOf('BR');
 console.log('Result of indexOf method: ' + invalidCountry);
 
-// lastIndexOf() - returns the index number of the last matching element found in an array. Syntax: arrayName.lasIndexOf(searchValue);
+// lastIndexOf() - returns the index number of the last matching element found in an array. Syntax: arrayName.lastIndexOf(searchValue);
 
 let lastIndex = countries.lastIndexOf('PH');
 console.log('Result of lastIndexOf method: ' + lastIndex);
@@ -221,3 +221,88 @@ let someValid = numbers.some(function(number){
 
 console.log('Result of some method: ')
 console.log(someValid);
+
+//filter() - return a new array that contains elements which meets the given condition
+/* Syntax:
+	let/const resultArray = arrayName.filter(function(indivElement){
+		return expression/condition;
+	})
+*/
+
+let filterValid = numbers.filter(function(number){
+	return(number < 3)
+})
+
+console.log('Result of filter method: ');
+console.log(filterValid);
+
+let nothingFound = numbers.filter(function(number){
+	return (number == 0);
+})
+
+console.log('Result of filter method: ');
+console.log(nothingFound);
+
+//filtering using forEach
+let filteredNumbers = [];
+
+numbers.forEach(function(number){
+	if(number > 3){
+		filteredNumbers.push(number);
+	}
+})
+
+console.log('Result of filter method: ');
+console.log(filteredNumbers);
+
+//includes() - the result of the first method is used on the second method until all "chained" methods have been resolved
+
+let products = ['Mouse', 'Keyboard', 'Laptop', 'Monitor'];
+
+let filteredProducts = products.filter(function(product){
+	return product.toLowerCase().includes('a');
+})
+console.log(filteredProducts);
+
+//reduce() - evaluates elements from left to right and returns/reduces the array into a single value
+/* Syntax:
+	let/const resultArray = arrayName.reduce(function(accumulator, currentValues){
+		return expression/operation;
+	})
+*/
+
+let iteration = 0;
+
+let reducedArray = numbers.reduce(function(x, y){
+	console.warn('current iteration: ' + ++iteration);
+	console.log('accumulator: ' + x);
+	console.log('currentValue: ' + y);
+
+	return x + y;
+})
+console.log("Result of reduce method: " + reducedArray);
+
+let list = ['Hello', 'Again', 'World'];
+let reducedJoin = list.reduce(function(x,y){
+	return x + ' ' + y;
+})
+
+console.log("Result of reduce method: " + reducedJoin);
+
+//Multidimensional Array
+//Two dimensional Array - having an array within an array
+
+let oneDim = [];
+// 1st Dim   0   		1
+// 2nd Dim  0 1    	   0 1
+let twoDim = [[2, 4],[6, 8]];
+// 2x2 Two Dimensional Array
+console.log(twoDim[1][0]);
+console.log(twoDim[0][1]);
+console.log(twoDim[1][1]);
+
+// 3x2 Two Dimensional Array
+//            0         1       2
+//           0 1       0 1     0 1
+let twoDim2 = [[2, 4],[6, 8],[10, 12]];
+console.log(twoDim2[2][0]);
